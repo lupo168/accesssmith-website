@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="light dark">
+  <meta name="description" content="Website accessibility alerts, $249 audits, remediation for eligible sites, and ongoing monitoring for U.S. businesses.">
+  <meta name="theme-color" content="#071a2f">
+  <meta property="og:title" content="AccessSmith — Website Accessibility Audits &amp; Monitoring">
+  <meta property="og:description" content="Find website accessibility barriers, get a clear report, and decide what to fix next.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="data:,">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@500;600&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <title>Website Accessibility Audits &amp; Monitoring | AccessSmith</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      --navy: #071a2f; --navy-2: #0c2845; --ink: #102238; --muted: #526579;
+      --paper: #f7fafc; --surface: #ffffff; --surface-2: #eef4f6; --line: #cbd8df;
+      --accent: #087f78; --accent-strong: #05675f; --accent-soft: #d7f1ed;
+      --blue: #1768ac; --shadow: 0 18px 46px rgba(7, 26, 47, .12);
+      --sans: "Source Sans 3", ui-sans-serif, system-ui, sans-serif;
+      --serif: "IBM Plex Serif", Georgia, serif; --max: 1180px;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --ink: #eef6fb; --muted: #b8c8d5; --paper: #061320; --surface: #0c2135;
+        --surface-2: #102b42; --line: #29485f; --accent: #42c7bb;
+        --accent-strong: #72ded5; --accent-soft: #123d3d; --blue: #70b7f1;
+        --shadow: 0 20px 52px rgba(0, 0, 0, .34);
+      }
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+    body { margin: 0; background: var(--paper); color: var(--ink); font: 17px/1.6 var(--sans); text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; } button, a { -webkit-tap-highlight-color: transparent; }
+    :focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+    .skip-link { position: fixed; left: 16px; top: -80px; z-index: 100; padding: 10px 14px; background: var(--surface); color: var(--ink); border: 2px solid var(--accent); border-radius: 6px; }
+    .skip-link:focus { top: 12px; }
+    .wrap { width: min(var(--max), calc(100% - 40px)); margin-inline: auto; }
+    header { position: sticky; top: 0; z-index: 20; background: color-mix(in srgb, var(--paper) 94%, transparent); border-bottom: 1px solid var(--line); backdrop-filter: blur(12px); }
+    nav { min-height: 66px; display: flex; align-items: center; justify-content: flex-end; gap: 28px; }
+    nav a { color: var(--muted); text-decoration: none; font-size: .94rem; font-weight: 600; }
+    nav a:hover { color: var(--ink); }
+    nav .brand { display: inline-flex; align-items: center; gap: 10px; margin-right: auto; color: var(--ink); font-size: 1.08rem; font-weight: 700; letter-spacing: .015em; line-height: 1; }
+    .brand-mark { width: 29px; height: 29px; display: grid; place-items: center; flex: 0 0 auto; border-radius: 6px; background: var(--navy); color: #7ce0d7; font-size: .72rem; font-weight: 700; letter-spacing: -.02em; box-shadow: inset 0 0 0 1px rgba(255,255,255,.1); }
+    @media (prefers-color-scheme: dark) { .brand-mark { background: var(--accent); color: #041521; } }
+    nav .nav-cta { color: #fff; background: var(--navy); border-radius: 7px; padding: 9px 15px; }
+    @media (prefers-color-scheme: dark) { nav .nav-cta { color: #041521; background: var(--accent-strong); } }
+    section { padding: 92px 0; }
+    .hero { padding: 96px 0 84px; color: #f4fbff; background: linear-gradient(112deg, rgba(7, 26, 47, .99), rgba(10, 44, 68, .96)), var(--navy); overflow: hidden; }
+    .hero-grid { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(320px, .85fr); align-items: center; gap: 72px; }
+    .eyebrow { margin: 0 0 18px; color: #83ddd4; font-weight: 700; letter-spacing: .045em; font-size: .9rem; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 { margin-bottom: 24px; font: 600 clamp(2.7rem, 6vw, 5.25rem)/.98 var(--serif); letter-spacing: -.045em; max-width: 820px; }
+    .hero .lede { max-width: 680px; color: #c8d8e4; font-size: clamp(1.12rem, 2vw, 1.32rem); line-height: 1.55; margin-bottom: 32px; }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 30px; }
+    .button { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px; padding: 11px 19px; border-radius: 7px; font-weight: 700; text-decoration: none; border: 1px solid transparent; }
+    .button-primary { background: #52d0c4; color: #062325; } .button-primary:hover { background: #79ded5; }
+    .button-secondary { border-color: #668299; color: #f6fbff; background: transparent; } .button-secondary:hover { background: rgba(255,255,255,.08); }
+    .button-dark { background: var(--navy); color: #fff; } .button-dark:hover { background: var(--navy-2); }
+    .button-outline { border-color: var(--line); color: var(--ink); background: var(--surface); } .button-outline:hover { border-color: var(--accent); }
+    .signal { display: inline-flex; align-items: center; gap: 10px; color: #a9bdcc; font-size: .94rem; }
+    .signal::before { content: ""; width: 9px; height: 9px; background: #52d0c4; border-radius: 50%; box-shadow: 0 0 0 5px rgba(82,208,196,.13); }
+    .risk-panel { position: relative; background: #f8fbfd; color: #102238; border-radius: 14px; box-shadow: 0 28px 70px rgba(0,0,0,.3); padding: 28px; transform: rotate(1deg); }
+    .risk-panel::before { content: ""; position: absolute; inset: 14px 14px -14px -14px; z-index: -1; border: 1px solid rgba(104,220,209,.55); border-radius: 14px; }
+    .panel-head { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 24px; }
+    .panel-label { font-weight: 700; color: #183c59; }
+    .status { padding: 4px 9px; background: #ffedd5; color: #8d3d08; border-radius: 999px; font-size: .78rem; font-weight: 700; }
+    .path { display: grid; gap: 2px; }
+    .path-row { display: grid; grid-template-columns: 34px 1fr auto; align-items: center; gap: 12px; padding: 15px 0; border-bottom: 1px solid #dbe5ea; }
+    .path-row:last-child { border-bottom: 0; }
+    .path-number { width: 30px; height: 30px; display: grid; place-items: center; border-radius: 50%; color: #fff; background: #0b4660; font-weight: 700; font-size: .82rem; }
+    .path-copy strong { display: block; line-height: 1.15; } .path-copy span { color: #607486; font-size: .87rem; }
+    .path-mark { color: #087f78; font-weight: 700; font-size: .82rem; }
+    .intro { display: grid; grid-template-columns: .8fr 1.2fr; gap: 80px; align-items: start; }
+    .section-number { color: var(--accent); font-weight: 700; font-size: .9rem; letter-spacing: .06em; }
+    h2 { margin: 8px 0 20px; font: 600 clamp(2.1rem, 4vw, 3.45rem)/1.08 var(--serif); letter-spacing: -.03em; }
+    .section-lede { color: var(--muted); font-size: 1.12rem; max-width: 720px; }
+    .problem-list { display: grid; gap: 0; border-top: 1px solid var(--line); }
+    .problem-item { display: grid; grid-template-columns: 36px 1fr; gap: 18px; padding: 24px 0; border-bottom: 1px solid var(--line); }
+    .problem-item svg { width: 28px; color: var(--accent); margin-top: 3px; }
+    .problem-item h3 { font-size: 1.1rem; line-height: 1.25; margin-bottom: 5px; }
+    .problem-item p { color: var(--muted); margin-bottom: 0; }
+    .services { background: var(--surface-2); }
+    .section-head { display: flex; align-items: end; justify-content: space-between; gap: 48px; margin-bottom: 44px; }
+    .section-head .section-lede { max-width: 520px; margin-bottom: 10px; }
+    .service-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border: 1px solid var(--line); }
+    .service-card { min-height: 315px; padding: 28px 24px; background: var(--surface); border-right: 1px solid var(--line); display: flex; flex-direction: column; }
+    .service-card:last-child { border-right: 0; }
+    .service-card:nth-child(even) { background: color-mix(in srgb, var(--surface) 76%, var(--accent-soft)); }
+    .service-no { color: var(--accent); font: 600 2.1rem/1 var(--serif); margin-bottom: 34px; }
+    .service-card h3 { font: 600 1.4rem/1.2 var(--serif); margin-bottom: 8px; }
+    .price-tag { color: var(--accent-strong); font-weight: 700; margin-bottom: 17px; }
+    .service-card p { color: var(--muted); margin-bottom: 20px; }
+    .service-card a { margin-top: auto; font-weight: 700; color: var(--blue); text-underline-offset: 3px; }
+    .platform-note { margin-top: 32px; display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--line); border: 1px solid var(--line); }
+    .platform-path { background: var(--surface); padding: 24px; }
+    .platform-path h3 { margin-bottom: 7px; font-size: 1.05rem; }
+    .platform-path p { margin: 0; color: var(--muted); }
+    .flow-text { color: var(--accent-strong); font-weight: 700; }
+    .pricing { background: var(--paper); }
+    .pricing-grid { display: grid; grid-template-columns: 1.12fr .88fr; gap: 30px; align-items: stretch; }
+    .audit-price { background: var(--navy); color: #fff; padding: clamp(28px, 5vw, 52px); border-radius: 11px; box-shadow: var(--shadow); display: flex; flex-direction: column; }
+    .audit-price .kicker { color: #83ddd4; font-weight: 700; }
+    .audit-price h3 { margin: 14px 0 8px; font: 600 1.75rem/1.2 var(--serif); }
+    .big-price { font: 600 clamp(3.4rem, 8vw, 5.5rem)/1 var(--serif); letter-spacing: -.04em; }
+    .big-price small { font: 600 1rem/1 var(--sans); color: #abc0cf; letter-spacing: 0; }
+    .audit-price p { color: #c6d6e2; max-width: 610px; }
+    .feature-list { list-style: none; padding: 0; margin: 22px 0 28px; display: grid; gap: 10px; }
+    .feature-list li { display: flex; gap: 10px; align-items: flex-start; }
+    .feature-list li::before { content: "✓"; color: #61d2c7; font-weight: 700; }
+    .audit-price .button { align-self: flex-start; }
+    .monitor-price { background: var(--surface); border: 1px solid var(--line); padding: 34px; border-radius: 11px; }
+    .monitor-price h3 { margin-bottom: 8px; font: 600 1.65rem/1.2 var(--serif); }
+    .monitor-price > p { color: var(--muted); }
+    .price-rows { margin-top: 24px; border-top: 1px solid var(--line); }
+    .price-row { display: grid; grid-template-columns: 1fr auto auto; align-items: center; gap: 18px; padding: 20px 0; border-bottom: 1px solid var(--line); }
+    .price-row strong { display: block; } .price-row span { color: var(--muted); font-size: .9rem; }
+    .price-row .money { color: var(--ink); font: 600 1.4rem/1 var(--serif); white-space: nowrap; }
+    .mini-link { text-decoration: none; color: var(--blue); font-weight: 700; padding: 7px 0; white-space: nowrap; }
+    .fix-line { margin-top: 30px; padding: 22px 0 0; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .fix-line p { margin: 2px 0 0; color: var(--muted); }
+    .process { background: var(--surface-2); }
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; margin-top: 42px; }
+    .step { position: relative; padding-top: 24px; border-top: 3px solid var(--line); }
+    .step:first-child { border-color: var(--accent); }
+    .step span { display: block; color: var(--accent); font-weight: 700; margin-bottom: 15px; }
+    .step h3 { font: 600 1.35rem/1.2 var(--serif); margin-bottom: 9px; }
+    .step p { color: var(--muted); }
+    .faq-grid { display: grid; grid-template-columns: .7fr 1.3fr; gap: 76px; align-items: start; }
+    .faq-aside { position: sticky; top: 104px; padding: 26px; background: var(--accent-soft); }
+    .faq-aside h3 { font: 600 1.3rem/1.25 var(--serif); margin-bottom: 8px; }
+    .faq-aside p { color: var(--muted); }
+    .faq-list { border-top: 1px solid var(--line); }
+    details { border-bottom: 1px solid var(--line); }
+    summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; gap: 20px; align-items: center; padding: 23px 0; font-weight: 700; }
+    summary::-webkit-details-marker { display: none; }
+    summary::after { content: "+"; color: var(--accent); font-size: 1.45rem; font-weight: 400; }
+    details[open] summary::after { content: "−"; }
+    details p { margin: -6px 34px 23px 0; color: var(--muted); }
+    .closing { padding: 84px 0; color: #fff; background: var(--navy); }
+    .closing-inner { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 40px; }
+    .closing h2 { max-width: 760px; margin-bottom: 12px; }
+    .closing p { color: #bfd0dc; margin-bottom: 0; }
+    footer { background: #03111f; color: #adc0cf; padding: 38px 0; font-size: .92rem; }
+    .footer-grid { display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: start; }
+    .footer-brand { color: #fff; font-weight: 700; margin-bottom: 5px; }
+    .footer-links { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 16px 24px; }
+    .footer-links a { color: #c9d7e1; }
+    .legal { max-width: 760px; margin-top: 22px; color: #8299aa; font-size: .82rem; }
+    @media (max-width: 960px) {
+      .hero-grid, .intro, .pricing-grid, .faq-grid { grid-template-columns: 1fr; }
+      .hero-grid { gap: 54px; } .risk-panel { max-width: 620px; } .intro, .faq-grid { gap: 44px; }
+      .service-grid { grid-template-columns: 1fr 1fr; }
+      .service-card:nth-child(2) { border-right: 0; }
+      .service-card:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+      .faq-aside { position: static; }
+    }
+    @media (max-width: 700px) {
+      body { font-size: 16px; } .wrap { width: min(100% - 28px, var(--max)); }
+      header { position: relative; }
+      nav { min-height: auto; padding: 12px 0; gap: 11px 18px; justify-content: flex-start; flex-wrap: wrap; }
+      nav .brand { font-size: 1rem; }
+      .brand-mark { width: 27px; height: 27px; }
+      nav a { font-size: .88rem; } nav .nav-cta { margin-left: auto; }
+      nav .brand ~ a:not(.nav-cta) { order: 2; }
+      section { padding: 68px 0; } .hero { padding: 72px 0 66px; }
+      .hero-grid { grid-template-columns: 1fr; gap: 48px; } h1 { font-size: clamp(2.55rem, 14vw, 4rem); }
+      .actions .button { width: 100%; } .risk-panel { padding: 20px; transform: none; } .risk-panel::before { display: none; }
+      .path-row { grid-template-columns: 32px 1fr; } .path-mark { grid-column: 2; }
+      .section-head { align-items: start; flex-direction: column; gap: 4px; }
+      .service-grid { grid-template-columns: 1fr; }
+      .service-card { min-height: auto; border-right: 0; border-bottom: 1px solid var(--line); }
+      .service-card:last-child { border-bottom: 0; } .platform-note { grid-template-columns: 1fr; }
+      .price-row { grid-template-columns: 1fr auto; gap: 6px 12px; } .price-row .mini-link { grid-column: 1 / -1; }
+      .fix-line { align-items: flex-start; flex-direction: column; }
+      .steps { grid-template-columns: 1fr; gap: 12px; }
+      .closing-inner, .footer-grid { grid-template-columns: 1fr; }
+      .closing .button { width: 100%; } .footer-links { justify-content: flex-start; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; } }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <header>
+    <nav class="wrap" aria-label="Primary navigation">
+      <a class="brand" href="#main" aria-label="AccessSmith home"><span class="brand-mark" aria-hidden="true">AS</span><span>AccessSmith</span></a>
+      <a href="#services">Services</a><a href="#pricing">Pricing</a><a href="#process">How it works</a><a href="#faq">FAQ</a>
+      <a class="nav-cta" href="mailto:hi@accesssmith.com?subject=Free%20website%20risk%20check&amp;body=Website%20URL%3A%20%0AName%3A%20%0ACompany%3A%20">Free risk check</a>
+    </nav>
+  </header>
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="wrap hero-grid">
+        <div>
+          <p class="eyebrow">Website accessibility audits and monitoring</p>
+          <h1 id="hero-title">Find website barriers before they become legal problems.</h1>
+          <p class="lede">We check your site and explain what matters. You decide what to fix. No jargon, and no claim that one scan makes a website compliant.</p>
+          <div class="actions"><a class="button button-primary" href="mailto:hi@accesssmith.com?subject=Free%20website%20risk%20check&amp;body=Website%20URL%3A%20%0AName%3A%20%0ACompany%3A%20">Get a Free Risk Check</a><a class="button button-secondary" href="#pricing">See Pricing</a></div>
+          <span class="signal">Start with a free Alert. Pay only if you want a full audit.</span>
+        </div>
+        <div class="risk-panel" aria-label="AccessSmith service path">
+          <div class="panel-head"><span class="panel-label">The AccessSmith path</span><span class="status">START FREE</span></div>
+          <div class="path">
+            <div class="path-row"><span class="path-number">01</span><span class="path-copy"><strong>Alert</strong><span>A quick check by email</span></span><span class="path-mark">FREE</span></div>
+            <div class="path-row"><span class="path-number">02</span><span class="path-copy"><strong>Audit</strong><span>A full, prioritized report</span></span><span class="path-mark">$249</span></div>
+            <div class="path-row"><span class="path-number">03</span><span class="path-copy"><strong>Fix</strong><span>For sites where we can edit the code</span></span><span class="path-mark">QUOTE</span></div>
+            <div class="path-row"><span class="path-number">04</span><span class="path-copy"><strong>Monitor</strong><span>Keep checking as the site changes</span></span><span class="path-mark">PLAN</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section aria-labelledby="problem-title">
+      <div class="wrap intro">
+        <div><span class="section-number">01 / THE RISK</span><h2 id="problem-title">A site can look fine and still shut people out.</h2><p class="section-lede">Keyboard traps and missing form labels are easy to miss in a routine site review. So is weak contrast. A complaint makes those problems much harder to ignore.</p></div>
+        <div class="problem-list">
+          <article class="problem-item"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2.8 21 7v6c0 4.7-3.4 7.3-9 8.7C6.4 20.3 3 17.7 3 13V7l9-4.2Z"/><path d="M12 8v5m0 3.2v.1"/></svg><div><h3>3,117 federal lawsuits in 2025</h3><p>Seyfarth Shaw counted 3,117 federal website accessibility lawsuits in 2025, up 27% from 2024. <a href="https://www.jdsupra.com/legalnews/federal-court-website-accessibility-1182174/" target="_blank" rel="noopener noreferrer">Read the docket review</a>.</p></div></article>
+          <article class="problem-item"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 20V9l8-5 8 5v11"/><path d="M8 20v-6h8v6M2 20h20"/></svg><div><h3>That count is only part of the picture</h3><p>The same review says its total does not include state-court cases or demand letters. It also notes that some federal cases may not appear in keyword searches.</p></div></article>
+          <article class="problem-item"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M15.5 8.5c-.8-.7-2-.9-3.2-.6-1.3.3-2.1 1.2-2.1 2.2 0 1.2 1 1.8 2.5 2.1 1.4.3 2.4.8 2.4 2 0 1.1-.9 2-2.2 2.3-1.5.3-2.9-.1-3.8-1M12.4 6.8l-1 10.5"/></svg><div><h3>A scanner does not settle the question</h3><p>Automated checks are useful, but they cannot judge every real user task. Keyboard testing and human review still matter.</p></div></article>
+          <article class="problem-item"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 12s3.5-6 9-6 9 6 9 6-3.5 6-9 6-9-6-9-6Z"/><circle cx="12" cy="12" r="2.3"/><path d="m19.5 4.5-15 15"/></svg><div><h3>Common barriers are easy to overlook</h3><p>Missing labels, poor keyboard support, weak contrast, and inaccessible forms can sit behind an otherwise polished design.</p></div></article>
+        </div>
+      </div>
+    </section>
+    <section class="services" id="services" aria-labelledby="services-title">
+      <div class="wrap">
+        <div class="section-head"><div><span class="section-number">02 / SERVICES</span><h2 id="services-title">Start free. Go further if you need to.</h2></div><p class="section-lede">Alert comes first. Audit is next, followed by Fix and Monitor. We offer Fix only when we can work in the site's code.</p></div>
+        <div class="service-grid">
+          <article class="service-card"><span class="service-no">01</span><h3>Alert</h3><div class="price-tag">Free</div><p>We run a quick check and email the main risks we find. No cost and no obligation.</p><a href="mailto:hi@accesssmith.com?subject=Free%20website%20risk%20check&amp;body=Website%20URL%3A%20%0AName%3A%20%0ACompany%3A%20">Request a risk check</a></article>
+          <article class="service-card"><span class="service-no">02</span><h3>Audit</h3><div class="price-tag">$249 one time</div><p>A deeper review with findings ranked by priority and written so your developer can use them.</p><a href="#pricing">See audit details</a></article>
+          <article class="service-card"><span class="service-no">03</span><h3>Fix</h3><div class="price-tag">Custom quote</div><p>We fix issues on WordPress and Shopify sites, plus custom-coded sites, when we can access the code.</p><a href="mailto:hi@accesssmith.com?subject=Accessibility%20remediation%20quote&amp;body=Website%20URL%3A%20%0APlatform%3A%20%0AWhat%20needs%20attention%3A%20">Ask about a fix</a></article>
+          <article class="service-card"><span class="service-no">04</span><h3>Monitor</h3><div class="price-tag">$29 monthly · $79 quarterly · $290 yearly</div><p>Scheduled checks flag detectable issues that show up after the site changes.</p><a href="#pricing">Compare plans</a></article>
+        </div>
+        <div class="platform-note" aria-label="Platform service availability">
+          <article class="platform-path"><h3>WordPress and Shopify, plus custom-coded sites</h3><p><span class="flow-text">Alert, then Audit. Fix comes next when we can edit the code. Monitor after that.</span></p></article>
+          <article class="platform-path"><h3>Wix and Squarespace, plus GoDaddy Website Builder</h3><p><span class="flow-text">Alert, then Audit. Monitor after that.</span> We explain what needs attention, but we do not offer Fix on these closed-builder sites.</p></article>
+        </div>
+      </div>
+    </section>
+    <section class="pricing" id="pricing" aria-labelledby="pricing-title">
+      <div class="wrap">
+        <div class="section-head"><div><span class="section-number">03 / PRICING</span><h2 id="pricing-title">See the price before you buy.</h2></div><p class="section-lede">The full audit is $249. Monthly monitoring costs $29. Quarterly costs $79, and yearly costs $290. Stripe handles payment.</p></div>
+        <div class="pricing-grid">
+          <article class="audit-price"><span class="kicker">Full accessibility audit</span><h3>Know what needs attention first</h3><div class="big-price">$249 <small>one time</small></div><ul class="feature-list"><li>Automated checks plus expert review of the agreed scope</li><li>Findings ranked by risk and priority</li><li>Clear notes your developer can work from</li><li>A separate Fix quote when the site is eligible</li></ul><a class="button button-primary" href="https://buy.stripe.com/eVq5kC1Nx45ngUNffVfEk00" target="_blank" rel="noopener noreferrer">Purchase the $249 audit</a></article>
+          <article class="monitor-price"><h3>Ongoing monitoring</h3><p>Rescans flag detectable issues that appear as the site changes.</p><div class="price-rows">
+            <div class="price-row"><div><strong>Monthly</strong><span>Flexible, month to month</span></div><div class="money">$29</div><a class="mini-link" href="https://buy.stripe.com/7sYeVc2RBdFX8oh4BhfEk01" target="_blank" rel="noopener noreferrer">Choose</a></div>
+            <div class="price-row"><div><strong>Quarterly</strong><span>Billed every three months</span></div><div class="money">$79</div><a class="mini-link" href="https://buy.stripe.com/4gM14mgIrgS99sl4BhfEk02" target="_blank" rel="noopener noreferrer">Choose</a></div>
+            <div class="price-row"><div><strong>Yearly</strong><span>One annual payment</span></div><div class="money">$290</div><a class="mini-link" href="https://buy.stripe.com/9B63cu1NxfO51ZTc3JfEk03" target="_blank" rel="noopener noreferrer">Choose</a></div>
+          </div><div class="fix-line"><div><strong>Need the issues fixed?</strong><p>We quote remediation after we review the site and scope.</p></div><a class="button button-outline" href="mailto:hi@accesssmith.com?subject=Accessibility%20remediation%20quote&amp;body=Website%20URL%3A%20%0APlatform%3A%20%0A">Contact us</a></div></article>
+        </div>
+      </div>
+    </section>
+    <section class="process" id="process" aria-labelledby="process-title">
+      <div class="wrap"><span class="section-number">04 / HOW IT WORKS</span><h2 id="process-title">What happens next</h2><p class="section-lede">Send the URL. We do the review. You decide what to do with the findings.</p><div class="steps">
+        <article class="step"><span>FIRST</span><h3>Send your site</h3><p>Tell us the public URL and which pages or user paths matter most.</p></article>
+        <article class="step"><span>NEXT</span><h3>Read the report</h3><p>You get a ranked list of issues with enough detail for a developer to act.</p></article>
+        <article class="step"><span>YOUR CALL</span><h3>Choose the next move</h3><p>Use your own team, ask us to quote an eligible site, or add monitoring.</p></article>
+      </div></div>
+    </section>
+    <section id="faq" aria-labelledby="faq-title">
+      <div class="wrap faq-grid">
+        <div><span class="section-number">05 / FAQ</span><h2 id="faq-title">Common questions</h2><p class="section-lede">The short version, before you spend anything.</p><aside class="faq-aside"><h3>Still unsure?</h3><p>Email us. We will tell you plainly whether we can help with your site.</p><a href="mailto:hi@accesssmith.com">hi@accesssmith.com</a></aside></div>
+        <div class="faq-list">
+          <details><summary>What does website accessibility mean?</summary><p>People should be able to use the site with a keyboard, screen reader, captions, magnification, or other assistive technology. WCAG is the technical standard most teams use to measure that work.</p></details>
+          <details><summary>Can a website lead to a lawsuit?</summary><p>Yes. U.S. businesses have faced lawsuits and demand letters over barriers that allegedly deny equal access. The law varies by jurisdiction and by the facts, so ask qualified counsel about your own exposure.</p></details>
+          <details><summary>What does the $249 audit cover?</summary><p>We agree on the scope first, then review key pages and user paths. The report covers issues involving keyboard use, structure, forms, images, contrast, links, and interactive controls.</p></details>
+          <details><summary>Do you fix the issues?</summary><p>We can quote Fix work for WordPress and Shopify sites, plus custom-coded sites, when we can access the relevant code. The quote is separate from the $249 audit.</p></details>
+          <details><summary>What if my site uses a closed builder?</summary><p>That includes Wix and Squarespace sites, plus GoDaddy Website Builder. We can start with Alert and Audit, then Monitor. We do not offer Fix work on closed builders, but the report will explain what needs attention.</p></details>
+          <details><summary>What does monitoring catch?</summary><p>Monitoring checks for new, detectable issues as the site changes. It gives you an early warning. It cannot find every barrier or remove every legal risk, so human review still matters.</p></details>
+        </div>
+      </div>
+    </section>
+    <section class="closing" aria-labelledby="closing-title"><div class="wrap closing-inner"><div><h2 id="closing-title">Start with the free Alert.</h2><p>Send your URL. We will reply with the main risks we find and explain the next step, if you need one.</p></div><a class="button button-primary" href="mailto:hi@accesssmith.com?subject=Free%20website%20risk%20check&amp;body=Website%20URL%3A%20%0AName%3A%20%0ACompany%3A%20">Get a Free Risk Check</a></div></section>
+  </main>
+  <footer><div class="wrap"><div class="footer-grid"><div><div class="footer-brand">© 2026 Macallan Inc. | AccessSmith is a service of Macallan Inc.</div><a href="mailto:hi@accesssmith.com">hi@accesssmith.com</a></div><div class="footer-links"><a href="#services">Services</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a><a href="https://www.ada.Gov/resources/web-guidance/" target="_blank" rel="noopener noreferrer">U.S. DOJ web accessibility guidance</a></div></div><p class="legal">Macallan Inc. is not a law firm and does not provide legal advice. Our work can reduce risk, but it cannot guarantee legal compliance or prevent claims. Consult qualified counsel about your legal obligations.</p></div></footer>
+</body>
+</html>
