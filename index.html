@@ -182,6 +182,8 @@
       .closing .button { width: 100%; } .footer-links { justify-content: flex-start; }
     }
     @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; } }
+    /* ADA fix 2026-10-08: darken teal text on light bg to pass WCAG AA 4.5:1 */
+    .section-number, .step span { color: #066e68; }
   </style>
 </head>
 <body>
