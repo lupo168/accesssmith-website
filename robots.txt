@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.accesssmith.com/sitemap.xml
+Sitemap: https://accesssmith.com/sitemap.xml
